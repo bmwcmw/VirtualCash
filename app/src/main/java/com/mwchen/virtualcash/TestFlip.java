@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -99,8 +100,22 @@ public class TestFlip extends ActionBarActivity
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                            float velocityY) {
-        //display next view in flipper queue
-        this.flipper.showNext();
-        return true;
+        //if right to left
+        if (e1.getX() - e2.getX() > 120) {
+            //register flipper effect
+            //must be in anim
+            this.flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.left_in));
+            this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.left_out));
+            this.flipper.showNext();
+            return true;
+        }
+        //if left to right
+        else if (e1.getX() - e2.getX() < -120) {
+            this.flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.right_in));
+            this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.right_out));
+            this.flipper.showPrevious();
+            return true;
+        }
+        return false;
     }
 }
