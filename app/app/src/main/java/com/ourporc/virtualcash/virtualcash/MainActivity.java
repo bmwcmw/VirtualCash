@@ -1,17 +1,16 @@
 package com.ourporc.virtualcash.virtualcash;
 
-import android.os.Bundle;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
@@ -63,11 +62,9 @@ public class MainActivity extends Activity implements OnGestureListener {
 
     // 图片资源
     private int[] imageIDs = new int[]{
-            R.drawable.gallery_photo_1,
-            R.drawable.gallery_photo_2,
-            R.drawable.gallery_photo_3,
-            R.drawable.gallery_photo_4,
-            R.drawable.gallery_photo_5
+            res.drawable.f1,
+            res.drawable.f2,
+            res.drawable.f3
     };
 
     // 支持View切换的控件，它包含一个以上的子View，同一个时刻只有一个子View显示
@@ -77,9 +74,9 @@ public class MainActivity extends Activity implements OnGestureListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(res.layout.activity_main);
 
-        this.vfContent = (ViewFlipper) findViewById(R.id.vf_content);
+        this.vfContent = (ViewFlipper) findViewById(res.id.vf_content);
         this.gestureDetector = new GestureDetector(this, this);
         for(int i = 0; i < this.imageIDs.length; i++) {
             ImageView imgv = new ImageView(this);
@@ -95,7 +92,7 @@ public class MainActivity extends Activity implements OnGestureListener {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(res.menu.main, menu);
         return true;
     }
     @Override
