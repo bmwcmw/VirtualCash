@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements OnGestureListener {
 
     // 图片资源
     private int[] imageIDs = new int[]{
-            res.drawable.f1,
+            res.drawable.,
             res.drawable.f2,
             res.drawable.f3
     };
